@@ -42,7 +42,7 @@ function Submit() {
       heroes: heroes,
       timeStamp: timeStamp,
       description: description,
-      steamID:steamID,
+      steamID: steamID,
       time: Date.now(),
     });
     if (res.data.status === "success") {
@@ -117,7 +117,9 @@ function Submit() {
           />
         </div>
         <div className={styles.input_item}>
-          <h4>SteamLink<span className='grey'>(optional)</span></h4>
+          <h4>
+            SteamLink<span className="grey">(optional)</span>
+          </h4>
           <input
             type="text"
             placeholder="https://steamcommunity.com/id/#######"
@@ -126,7 +128,9 @@ function Submit() {
           />
         </div>
         <div className="input-desc">
-          {status === "" ? null : <div className={status[7]==='s' ? 'green' : 'red'}>{status}</div>}
+          {status === "" ? null : (
+            <div className={status[7] === "s" ? "green" : "red"}>{status}</div>
+          )}
           {isSending === false ? (
             <button type="submit" onClick={(e) => submitEmail(e)}>
               Submit
