@@ -46,7 +46,14 @@ export default function handler(req, res) {
           <div>Message is sent from dotawtf.herokuapp.com</div>
         </p>
         <p>
+          <span style="font-weight: bold;">submitted by: </span>
+          <span>${req.body.steamID ? "unknown" : req.body.steamID}</span>
+          <div>Message is sent from dotawtf.herokuapp.com</div>
+        </p>
+        <p>
           <div>WebApp is written by SaltPie</div>
+          <div>Submitted at: ${req.body.time}</div>
+          
         </p>
       </div>`;
     let mailOptions = {

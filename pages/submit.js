@@ -12,13 +12,16 @@ function Submit() {
   const [isEmpty, setIsEmpty] = useState(false);
   const [status, setStatus] = useState("");
   const [isSending, setIsSending] = useState(false);
+  const [steamID, setSteamID] = useState("");
 
   const clearInputs = () => {
     setType("");
     setGameID("");
+    setplayerName("");
     setHeroes("");
     setTimeStamp("");
     setDescription("");
+    setSteamID("");
   };
 
   const submitEmail = async (e) => {
@@ -30,7 +33,7 @@ function Submit() {
       }, 1000);
       return;
     }
-    setIsSending(true)
+    setIsSending(true);
     setStatus("Sending");
     const res = await axios.post("/api/submit", {
       type: type,
@@ -39,16 +42,17 @@ function Submit() {
       heroes: heroes,
       timeStamp: timeStamp,
       description: description,
+      steamID:steamID,
       time: Date.now(),
     });
     if (res.data.status === "success") {
       setStatus("Submit success! Thank You For Your Submission");
-      clearInputs()
+      clearInputs();
     }
     if (res.status === "failed") {
       setStatus("Submit failed! Please contact Administrator");
     }
-    setIsSending(false)
+    setIsSending(false);
   };
 
   return (
@@ -112,8 +116,17 @@ function Submit() {
             className={styles.input_desc}
           />
         </div>
+        <div className={styles.input_item}>
+          <h4>SteamLink<span className='grey'>(optional)</span></h4>
+          <input
+            type="text"
+            placeholder="https://steamcommunity.com/id/#######"
+            onChange={(e) => setSteamID(e.target.value)}
+            value={steamID}
+          />
+        </div>
         <div className="input-desc">
-          {status === "" ? null : <div>{status}</div>}
+          {status === "" ? null : <div className={status[7]==='s' ? 'green' : 'red'}>{status}</div>}
           {isSending === false ? (
             <button type="submit" onClick={(e) => submitEmail(e)}>
               Submit
