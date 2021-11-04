@@ -5,7 +5,7 @@ function Footer() {
   return (
     <section className={`${styles["footer-container"]} flex-container `}>
       <article className={`${styles["footer-item"]}`}>
-        <div>Join Our Comunity</div>
+        <div>Join Our Community</div>
         <div>
           <a href="https://www.youtube.com/c/DotaWatafak" target="_blank">
             <img
