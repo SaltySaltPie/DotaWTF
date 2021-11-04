@@ -1,0 +1,22 @@
+.footer-container {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  height: 5rem;
+  width: 60%;
+  background-color: grey;
+  color: white;
+}
+
+.footer-item {
+  width: 100%;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bolder;
+}
+
+.icons {
+    max-height: 3rem;
+    padding: 0 0.5rem;
+}

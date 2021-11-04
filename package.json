@@ -1,0 +1,28 @@
+{
+  "name": "nextapp",
+  "private": true,
+  "scripts": {
+    "devno": "nodemon -w server/server.js server/server.js",
+    "dev": "next dev",
+    "dev2": "node ssr-server.js",
+    "build": "next build",
+    "start": "next start -p $port",
+    "lint": "next lint",
+    "export": "next export",
+    "heroku-build": "npm run build"
+  },
+  "dependencies": {
+    "axios": "^0.24.0",
+    "express": "^4.17.1",
+    "next": "12.0.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-player": "^2.9.0",
+    "sass": "^1.43.4"
+  },
+  "devDependencies": {
+    "eslint": "7.32.0",
+    "eslint-config-next": "12.0.2",
+    "fs-extra": "^10.0.0"
+  }
+}

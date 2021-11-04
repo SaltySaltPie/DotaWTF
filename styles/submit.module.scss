@@ -1,0 +1,39 @@
+//submit
+.submit_container {
+  padding-top: 1rem;
+  width: 100%;
+  text-align: center;
+  h1 {
+    font-size: 1.5rem;
+  }
+  h4 {
+    font-size: 1rem;
+  }
+  form {
+    padding-top: 1rem;
+    width: 60%;
+    margin: 0 auto;
+    input {
+      width: 60%;
+      border: none;
+      border-bottom-style: groove;
+      &:focus {
+        outline: none;
+        background-color: rgb(204, 204, 204);
+      }
+    }
+    textarea {
+      border-style: groove;
+      width: 60%;
+      height: 8rem;
+    }
+  }
+}
+.input_item {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.input_desc {
+  height: 10rem;
+}

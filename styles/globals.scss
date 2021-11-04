@@ -1,0 +1,73 @@
+//test
+.tb {
+  outline: 1px solid black;
+}
+.tw {
+  outline: 1px solid white;
+}
+.tr {
+  outline: 1px solid red;
+}
+
+// global
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.h100 {
+  height: 100%;
+}
+
+.w100 {
+  width: 100%;
+}
+
+.flex-container {
+  display: flex;
+}
+.text-center {
+  text-align: center;
+}
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+//app.js
+.body {
+  max-width: 100%;
+}
+.content-container {
+  min-width: 60%;
+  margin: 0 auto;
+  background-color: white;
+}
+
+.body-container {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.main-content-container {
+  padding-top: 10rem;
+}
+
+// nav
+@media screen and (max-width: 600px) {
+  .nav-max {
+    width: 100%;
+  }
+  .font-max {
+    font-size: 1rem;
+    margin: 0.2rem 0;
+  }
+}
