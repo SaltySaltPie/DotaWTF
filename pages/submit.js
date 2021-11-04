@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import styles from "../styles/submit.module.scss";
 
@@ -9,26 +9,46 @@ function Submit() {
   const [heroes, setHeroes] = useState("");
   const [timeStamp, setTimeStamp] = useState("");
   const [description, setDescription] = useState("");
+  const [isEmpty, setIsEmpty] = useState(false);
   const [status, setStatus] = useState("");
+  const [isSending, setIsSending] = useState(false);
+
+  const clearInputs = () => {
+    setType("");
+    setGameID("");
+    setHeroes("");
+    setTimeStamp("");
+    setDescription("");
+  };
 
   const submitEmail = async (e) => {
     e.preventDefault();
-    const res = await axios.post("http://localhost:3001/submit", {
+    if (gameID.length < 9) {
+      setIsEmpty(true);
+      setTimeout(() => {
+        setIsEmpty(false);
+      }, 1000);
+      return;
+    }
+    setIsSending(true)
+    setStatus("Sending");
+    const res = await axios.post("/api/submit", {
       type: type,
       gameID: gameID,
       playerName: playerName,
       heroes: heroes,
       timeStamp: timeStamp,
       description: description,
+      time: Date.now(),
     });
-    if (res.status === "success") {
-      alert(res.status);
-      setStatus("success");
+    if (res.data.status === "success") {
+      setStatus("Submit success! Thank You For Your Submission");
+      clearInputs()
     }
     if (res.status === "failed") {
-      alert(res.status);
-      setStatus("failed");
+      setStatus("Submit failed! Please contact Administrator");
     }
+    setIsSending(false)
   };
 
   return (
@@ -45,12 +65,15 @@ function Submit() {
           />
         </div>
         <div className={styles.input_item}>
-          <h4>Game ID</h4>
+          <h4>
+            Game ID <span className="red">*</span>
+          </h4>
           <input
             type="number"
             placeholder="6123456789"
             onChange={(e) => setGameID(e.target.value)}
             value={gameID}
+            className={isEmpty ? `${styles["error"]}` : null}
           />
         </div>
         <div className={styles.input_item}>
@@ -89,11 +112,13 @@ function Submit() {
             className={styles.input_desc}
           />
         </div>
-        {status !== "" ? <div>{status}</div> : null}
         <div className="input-desc">
-          <button type="submit" onClick={(e) => submitEmail(e)}>
-            Submit
-          </button>
+          {status === "" ? null : <div>{status}</div>}
+          {isSending === false ? (
+            <button type="submit" onClick={(e) => submitEmail(e)}>
+              Submit
+            </button>
+          ) : null}
         </div>
       </form>
     </section>
